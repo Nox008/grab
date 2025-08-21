@@ -11,11 +11,11 @@ const ArrowRightIcon = () => (
   </svg>
 );
 
-const PlusIcon = () => (
+/* const PlusIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5">
     <path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z" />
   </svg>
-);
+); */
 
 
 const ExamplePage = () => {
@@ -66,7 +66,11 @@ const ExamplePage = () => {
     setIsDarkMode(!isDarkMode)
     document.documentElement.classList.toggle('dark', !isDarkMode)
   }
-  const handleCartClick = () => console.log("Cart clicked")
+
+  const CartClick = () => {
+    setCartCount(cartCount+1)
+    console.log("Cart Clicked, Value updated")
+  }
 
   // --- Product Data (Unchanged) ---
   const products = [
@@ -111,7 +115,7 @@ const ExamplePage = () => {
         onSignIn={handleSignIn}
         onSignOut={handleSignOut}
         onThemeToggle={handleThemeToggle}
-        onCartClick={handleCartClick}
+        onCartClick={CartClick}
         className="bg-white/80 dark:bg-black/50 backdrop-blur-xl border-b border-zinc-200 dark:border-zinc-800"
       />
 
@@ -161,8 +165,8 @@ const ExamplePage = () => {
                   <h3 className="mt-8 text-2xl font-bold text-zinc-900 dark:text-white">{product.title}</h3>
                   <p className="mt-2 text-lg text-zinc-600 dark:text-zinc-400">{product.price}</p>
                   <div className="mt-6 flex items-center justify-center gap-3">
-                    <button className="bg-blue-600 text-white font-semibold py-2 px-6 rounded-full opacity-0 group-hover:opacity-100 transform group-hover:translate-y-0 -translate-y-2 transition-all duration-300">
-                      Buy
+                    <button onClick={CartClick} className="bg-blue-600 text-white font-semibold py-2 px-6 rounded-full opacity-100 hover:bg-blue-700">
+                      Add To Cart
                     </button>
                      <a href="#" className="text-blue-500 font-semibold hover:underline">Learn more &rarr;</a>
                   </div>
